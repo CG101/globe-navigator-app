@@ -3,7 +3,7 @@ import { LoadingGlobe } from "@/components/LoadingGlobe";
 import { InfoBox } from "@/components/InfoBox";
 import { VisaInfo } from "@/components/VisaInfo";
 import { ApplicationCenters } from "@/components/ApplicationCenters";
-import { Passport, Building2 } from "lucide-react";
+import { FileText, Building2 } from "lucide-react";
 
 type Screen = "main" | "visa" | "centers";
 
@@ -38,7 +38,7 @@ const Index = () => {
             </h1>
             <InfoBox
               title="Visa Information"
-              icon={<Passport className="w-6 h-6" />}
+              icon={<FileText className="w-6 h-6" />}
               onClick={() => handleScreenChange("visa")}
             />
             <InfoBox
