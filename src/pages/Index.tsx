@@ -3,9 +3,9 @@ import { LoadingGlobe } from "@/components/LoadingGlobe";
 import { InfoBox } from "@/components/InfoBox";
 import { VisaInfo } from "@/components/VisaInfo";
 import { ApplicationCenters } from "@/components/ApplicationCenters";
-import { FileText, Building2 } from "lucide-react";
+import { FileText, Building2, ClipboardList, QuestionMarkCircle } from "lucide-react";
 
-type Screen = "main" | "visa" | "centers";
+type Screen = "main" | "visa" | "centers" | "checklist" | "need-visa";
 
 const Index = () => {
   const [loading, setLoading] = useState(true);
@@ -46,6 +46,16 @@ const Index = () => {
               icon={<Building2 className="w-6 h-6" />}
               onClick={() => handleScreenChange("centers")}
             />
+            <InfoBox
+              title="Visa Checklist"
+              icon={<ClipboardList className="w-6 h-6" />}
+              onClick={() => handleScreenChange("checklist")}
+            />
+            <InfoBox
+              title="Do I Need a Visa?"
+              icon={<QuestionMarkCircle className="w-6 h-6" />}
+              onClick={() => handleScreenChange("need-visa")}
+            />
           </div>
         )}
 
@@ -55,6 +65,33 @@ const Index = () => {
 
         {currentScreen === "centers" && (
           <ApplicationCenters onBack={() => handleScreenChange("main")} />
+        )}
+
+        {/* Note: The new screens will need to be implemented separately */}
+        {currentScreen === "checklist" && (
+          <div className="animate-fade-in">
+            <button
+              onClick={() => handleScreenChange("main")}
+              className="mb-6 flex items-center text-primary hover:opacity-80"
+            >
+              <span>Back</span>
+            </button>
+            <h2 className="text-2xl font-bold text-gray-800">Visa Checklist</h2>
+            <p className="text-gray-600 mt-4">Coming soon...</p>
+          </div>
+        )}
+
+        {currentScreen === "need-visa" && (
+          <div className="animate-fade-in">
+            <button
+              onClick={() => handleScreenChange("main")}
+              className="mb-6 flex items-center text-primary hover:opacity-80"
+            >
+              <span>Back</span>
+            </button>
+            <h2 className="text-2xl font-bold text-gray-800">Do I Need a Visa?</h2>
+            <p className="text-gray-600 mt-4">Coming soon...</p>
+          </div>
         )}
       </div>
     </div>
