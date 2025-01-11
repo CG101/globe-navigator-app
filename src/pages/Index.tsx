@@ -3,7 +3,7 @@ import { LoadingGlobe } from "@/components/LoadingGlobe";
 import { InfoBox } from "@/components/InfoBox";
 import { VisaInfo } from "@/components/VisaInfo";
 import { ApplicationCenters } from "@/components/ApplicationCenters";
-import { FileText, Building2, ClipboardList, QuestionMarkCircle } from "lucide-react";
+import { FileText, Building2, ClipboardList, HelpCircle } from "lucide-react";
 
 type Screen = "main" | "visa" | "centers" | "checklist" | "need-visa";
 
@@ -53,7 +53,7 @@ const Index = () => {
             />
             <InfoBox
               title="Do I Need a Visa?"
-              icon={<QuestionMarkCircle className="w-6 h-6" />}
+              icon={<HelpCircle className="w-6 h-6" />}
               onClick={() => handleScreenChange("need-visa")}
             />
           </div>
