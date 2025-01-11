@@ -2,10 +2,22 @@ import { ChevronLeft } from "lucide-react";
 import { useState } from "react";
 
 const countries = [
-  { name: "United States", pdfUrl: "#" },
-  { name: "United Kingdom", pdfUrl: "#" },
-  { name: "Canada", pdfUrl: "#" },
-  { name: "Australia", pdfUrl: "#" },
+  { 
+    name: "United States",
+    info: "Tourist visa (B1/B2): Required for most visitors. Processing time: 3-6 months. Valid for up to 10 years with multiple entries."
+  },
+  { 
+    name: "United Kingdom",
+    info: "Standard Visitor visa: Required for most visitors. Processing time: 3 weeks. Valid for 6 months, 2, 5, or 10 years."
+  },
+  { 
+    name: "Canada",
+    info: "Temporary Resident Visa (TRV): Required for most visitors. Processing time: 2-4 weeks. Usually valid for the duration of stay or up to 10 years."
+  },
+  { 
+    name: "Australia",
+    info: "eVisitor (subclass 651): Required for most visitors. Processing time: 1-2 business days. Valid for 12 months with multiple entries."
+  },
 ];
 
 interface VisaInfoProps {
@@ -14,11 +26,6 @@ interface VisaInfoProps {
 
 export const VisaInfo = ({ onBack }: VisaInfoProps) => {
   const [selectedCountry, setSelectedCountry] = useState<string | null>(null);
-
-  const handleCountryClick = (pdfUrl: string) => {
-    // In a premium version, this would handle PDF download
-    alert("Premium Feature: PDF Download");
-  };
 
   return (
     <div className="animate-fade-in">
@@ -34,13 +41,19 @@ export const VisaInfo = ({ onBack }: VisaInfoProps) => {
         <h2 className="text-2xl font-bold text-gray-800">Visa Information</h2>
         <div className="grid gap-3">
           {countries.map((country) => (
-            <button
-              key={country.name}
-              onClick={() => handleCountryClick(country.pdfUrl)}
-              className="w-full p-4 text-left bg-white rounded-lg shadow hover:shadow-md transition-shadow"
-            >
-              <span className="text-gray-800">{country.name}</span>
-            </button>
+            <div key={country.name} className="space-y-2">
+              <button
+                onClick={() => setSelectedCountry(selectedCountry === country.name ? null : country.name)}
+                className="w-full p-4 text-left bg-white rounded-lg shadow hover:shadow-md transition-shadow"
+              >
+                <span className="text-gray-800 font-medium">{country.name}</span>
+              </button>
+              {selectedCountry === country.name && (
+                <div className="p-4 bg-gray-50 rounded-lg animate-scale-up">
+                  <p className="text-gray-600 text-sm">{country.info}</p>
+                </div>
+              )}
+            </div>
           ))}
         </div>
       </div>
