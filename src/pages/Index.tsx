@@ -33,7 +33,7 @@ const Index = () => {
       <div className="max-w-md mx-auto">
         {currentScreen === "main" && (
           <div className="space-y-4 animate-fade-in">
-            <h1 className="text-2xl font-bold text-gray-800 mb-6">
+            <h1 className="text-2xl font-bold text-primary mb-6 animate-scale-up">
               Travel Assistant
             </h1>
             <InfoBox
@@ -67,7 +67,6 @@ const Index = () => {
           <ApplicationCenters onBack={() => handleScreenChange("main")} />
         )}
 
-        {/* Note: The new screens will need to be implemented separately */}
         {currentScreen === "checklist" && (
           <div className="animate-fade-in">
             <button
