@@ -20,7 +20,7 @@ export const InfoBox = ({ title, icon, onClick, className }: InfoBoxProps) => {
       )}
     >
       <div className="text-primary">{icon}</div>
-      <h3 className="text-lg font-semibold text-gray-800">{title}</h3>
+      <h3 className="text-lg font-semibold text-primary">{title}</h3>
     </button>
   );
 };
