@@ -2,14 +2,34 @@ import { ChevronLeft, Navigation } from "lucide-react";
 
 const centers = [
   {
-    name: "Main Center",
-    address: "123 Main St, City, Country",
-    coordinates: { lat: 0, lng: 0 },
+    name: "VFS Global Visa Application Center - Gauteng",
+    address: "2nd Floor, Rivonia Village Office Park, Corner Rivonia Boulevard and Mutual Road, Rivonia, Johannesburg",
+    coordinates: { lat: -26.0474, lng: 28.0603 },
   },
   {
-    name: "Downtown Center",
-    address: "456 Downtown Ave, City, Country",
-    coordinates: { lat: 0, lng: 0 },
+    name: "VFS Global Visa Application Center - Western Cape",
+    address: "47 Shortmarket Street, Greenmarket Square, Cape Town",
+    coordinates: { lat: -33.9249, lng: 18.4241 },
+  },
+  {
+    name: "VFS Global Visa Application Center - KwaZulu-Natal",
+    address: "3rd Floor, Musgrave Towers, 115 Musgrave Road, Durban",
+    coordinates: { lat: -29.8497, lng: 31.0218 },
+  },
+  {
+    name: "VFS Global Visa Application Center - Eastern Cape",
+    address: "Office 7C, Moffett on Main Lifestyle Centre, 17th Avenue, Walmer, Port Elizabeth",
+    coordinates: { lat: -33.9608, lng: 25.6022 },
+  },
+  {
+    name: "VFS Global Visa Application Center - Free State",
+    address: "Suite 1, First Floor, Southern Life Gardens, 70 Second Avenue, Westdene, Bloemfontein",
+    coordinates: { lat: -29.0852, lng: 26.1596 },
+  },
+  {
+    name: "VFS Global Visa Application Center - Mpumalanga",
+    address: "Shop 34B, Riverside Mall, Corner of R40 and White River Road, Nelspruit",
+    coordinates: { lat: -25.4753, lng: 30.9694 },
   },
 ];
 
@@ -41,7 +61,8 @@ export const ApplicationCenters = ({ onBack }: ApplicationCentersProps) => {
       </button>
 
       <div className="space-y-4">
-        <h2 className="text-2xl font-bold text-gray-800">Application Centers</h2>
+        <h2 className="text-2xl font-bold text-gray-800">Visa Application Centers in South Africa</h2>
+        <p className="text-gray-600">Select a center near you to get directions:</p>
         <div className="grid gap-4">
           {centers.map((center) => (
             <div
