@@ -1,4 +1,4 @@
-import { ChevronLeft, Navigation } from "lucide-react";
+import { ChevronLeft, Navigation, Clock, Phone, Globe, Mail } from "lucide-react";
 import { useState } from "react";
 
 const centers = {
@@ -7,11 +7,19 @@ const centers = {
       name: "VFS Global Visa Application Center - Gauteng",
       address: "2nd Floor, Rivonia Village Office Park, Corner Rivonia Boulevard and Mutual Road, Rivonia, Johannesburg",
       coordinates: { lat: -26.0474, lng: 28.0603 },
+      hours: "Monday to Friday: 08:00 - 16:00",
+      phone: "+27 12 425 3000",
+      email: "info.savisa@vfshelpline.com",
+      website: "https://www.vfsglobal.com/dha/southafrica",
     },
     {
       name: "VFS Global Visa Application Center - Western Cape",
       address: "47 Shortmarket Street, Greenmarket Square, Cape Town",
       coordinates: { lat: -33.9249, lng: 18.4241 },
+      hours: "Monday to Friday: 08:00 - 16:00",
+      phone: "+27 21 401 1000",
+      email: "info.savisa@vfshelpline.com",
+      website: "https://www.vfsglobal.com/dha/southafrica",
     },
     {
       name: "VFS Global Visa Application Center - KwaZulu-Natal",
@@ -39,11 +47,19 @@ const centers = {
       name: "UK Visa Application Centre - Johannesburg",
       address: "2nd Floor, 24 Central Building, 6 Gwen Lane, Sandton, Johannesburg",
       coordinates: { lat: -26.1052, lng: 28.0560 },
+      hours: "Monday to Friday: 08:30 - 16:30",
+      phone: "+27 27 836 9166",
+      email: "info.ukvisa@vfshelpline.com",
+      website: "https://www.vfsglobal.co.uk/southafrica/how_to_apply.html",
     },
     {
       name: "UK Visa Application Centre - Cape Town",
       address: "2nd Floor, Picbel Parkade, 58 Strand Street, Cape Town",
       coordinates: { lat: -33.9205, lng: 18.4233 },
+      hours: "Monday to Friday: 08:30 - 16:30",
+      phone: "+27 21 401 2000",
+      email: "info.ukvisa@vfshelpline.com",
+      website: "https://www.vfsglobal.co.uk/southafrica/how_to_apply.html",
     },
     {
       name: "UK Visa Application Centre - Durban",
@@ -108,6 +124,10 @@ export const ApplicationCenters = ({ onBack }: ApplicationCentersProps) => {
     window.open(userChoice ? googleMapsUrl : wazeUrl, "_blank");
   };
 
+  const openWebsite = (url: string) => {
+    window.open(url, "_blank");
+  };
+
   return (
     <div className="animate-fade-in">
       <button
@@ -118,17 +138,17 @@ export const ApplicationCenters = ({ onBack }: ApplicationCentersProps) => {
         <span>Back</span>
       </button>
 
-      <div className="space-y-4">
+      <div className="space-y-6">
         <h2 className="text-2xl font-bold text-gray-800">Visa Application Centers in South Africa</h2>
         <p className="text-gray-600">Select which country's visa you want to apply for:</p>
-        <div className="flex flex-wrap gap-2 mb-4">
+        <div className="flex flex-wrap gap-2 mb-6">
           {Object.keys(centers).map((country) => (
             <button
               key={country}
               onClick={() => setSelectedCountry(country)}
-              className={`px-4 py-2 rounded-full text-sm ${
+              className={`px-4 py-2 rounded-full text-sm transition-all duration-300 ${
                 selectedCountry === country
-                  ? "bg-primary text-white"
+                  ? "bg-primary text-white shadow-lg transform scale-105"
                   : "bg-gray-100 text-gray-600 hover:bg-gray-200"
               }`}
             >
@@ -136,20 +156,50 @@ export const ApplicationCenters = ({ onBack }: ApplicationCentersProps) => {
             </button>
           ))}
         </div>
-        <div className="grid gap-4">
+        <div className="grid gap-6">
           {centers[selectedCountry].map((center) => (
             <div
               key={center.name}
-              className="bg-white rounded-lg shadow p-4 space-y-2"
+              className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 space-y-4 border border-gray-100"
             >
-              <h3 className="font-semibold text-gray-800">{center.name}</h3>
-              <button
-                onClick={() => openMaps(center.address)}
-                className="flex items-center gap-2 text-primary hover:opacity-80"
-              >
-                <Navigation className="w-4 h-4" />
-                <span>{center.address}</span>
-              </button>
+              <h3 className="font-bold text-xl text-gray-800">{center.name}</h3>
+              
+              <div className="grid gap-3 text-gray-600">
+                <button
+                  onClick={() => openMaps(center.address)}
+                  className="flex items-center gap-2 text-primary hover:opacity-80 transition-opacity"
+                >
+                  <Navigation className="w-4 h-4 flex-shrink-0" />
+                  <span className="text-left">{center.address}</span>
+                </button>
+                
+                <div className="flex items-center gap-2">
+                  <Clock className="w-4 h-4 flex-shrink-0 text-primary" />
+                  <span>{center.hours}</span>
+                </div>
+                
+                <div className="flex items-center gap-2">
+                  <Phone className="w-4 h-4 flex-shrink-0 text-primary" />
+                  <a href={`tel:${center.phone}`} className="hover:text-primary transition-colors">
+                    {center.phone}
+                  </a>
+                </div>
+                
+                <div className="flex items-center gap-2">
+                  <Mail className="w-4 h-4 flex-shrink-0 text-primary" />
+                  <a href={`mailto:${center.email}`} className="hover:text-primary transition-colors">
+                    {center.email}
+                  </a>
+                </div>
+                
+                <button
+                  onClick={() => openWebsite(center.website)}
+                  className="flex items-center gap-2 text-primary hover:opacity-80 transition-opacity"
+                >
+                  <Globe className="w-4 h-4 flex-shrink-0" />
+                  <span>Visit Website</span>
+                </button>
+              </div>
             </div>
           ))}
         </div>
