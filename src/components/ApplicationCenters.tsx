@@ -2,7 +2,7 @@ import { ChevronLeft, Navigation } from "lucide-react";
 import { useState } from "react";
 
 const centers = {
-  "South Africa": [
+  "South African Visas": [
     {
       name: "VFS Global Visa Application Center - Gauteng",
       address: "2nd Floor, Rivonia Village Office Park, Corner Rivonia Boulevard and Mutual Road, Rivonia, Johannesburg",
@@ -34,52 +34,57 @@ const centers = {
       coordinates: { lat: -25.4753, lng: 30.9694 },
     },
   ],
-  "United Kingdom": [
+  "UK Visas": [
     {
-      name: "VFS Global UK Visa Application Centre - London",
-      address: "66 Wilson Street, London, EC2A 2BT",
-      coordinates: { lat: 51.5208, lng: -0.0870 },
+      name: "UK Visa Application Centre - Johannesburg",
+      address: "2nd Floor, 24 Central Building, 6 Gwen Lane, Sandton, Johannesburg",
+      coordinates: { lat: -26.1052, lng: 28.0560 },
     },
     {
-      name: "VFS Global UK Visa Application Centre - Manchester",
-      address: "50 Broadway, Salford Quays, Manchester M50 2UW",
-      coordinates: { lat: 53.4723, lng: -2.2935 },
-    },
-  ],
-  "United States": [
-    {
-      name: "VFS Global USA Application Center - New York",
-      address: "145 West 45th Street, Floor 4, New York, NY 10036",
-      coordinates: { lat: 40.7573, lng: -73.9842 },
+      name: "UK Visa Application Centre - Cape Town",
+      address: "2nd Floor, Picbel Parkade, 58 Strand Street, Cape Town",
+      coordinates: { lat: -33.9205, lng: 18.4233 },
     },
     {
-      name: "VFS Global USA Application Center - Washington DC",
-      address: "1025 Vermont Avenue NW, Suite 200, Washington, DC 20005",
-      coordinates: { lat: 38.9020, lng: -77.0307 },
+      name: "UK Visa Application Centre - Durban",
+      address: "Unit 1, Level 2, Durban Bay House, 333 Anton Lembede Street, Durban",
+      coordinates: { lat: -29.8579, lng: 31.0292 },
     },
   ],
-  "Australia": [
+  "US Visas": [
     {
-      name: "VFS Global Australia Visa Application Centre - Sydney",
-      address: "Level 5, 338 Pitt Street, Sydney NSW 2000",
-      coordinates: { lat: -33.8736, lng: 151.2075 },
+      name: "U.S. Consulate General - Johannesburg",
+      address: "1 Sandton Drive, Sandhurst, Johannesburg",
+      coordinates: { lat: -26.1033, lng: 28.0566 },
     },
     {
-      name: "VFS Global Australia Visa Application Centre - Melbourne",
-      address: "Level 3, 280 Collins Street, Melbourne VIC 3000",
-      coordinates: { lat: -37.8156, lng: 144.9666 },
+      name: "U.S. Consulate General - Cape Town",
+      address: "2 Reddam Avenue, Westlake Business Park, Tokai, Cape Town",
+      coordinates: { lat: -34.0741, lng: 18.4436 },
     },
   ],
-  "Canada": [
+  "Australian Visas": [
     {
-      name: "VFS Global Canada Visa Application Centre - Toronto",
-      address: "208 Bloor Street West, 3rd Floor, Toronto, ON M5S 3B4",
-      coordinates: { lat: 43.6685, lng: -79.3989 },
+      name: "Australian Visa Application Centre - Pretoria",
+      address: "Ground Floor, Brooklyn Bridge Office Park, 570 Fehrsen Street, Brooklyn, Pretoria",
+      coordinates: { lat: -25.7461, lng: 28.2314 },
     },
     {
-      name: "VFS Global Canada Visa Application Centre - Vancouver",
-      address: "1285 West Pender Street, Suite 300, Vancouver, BC V6E 4B1",
-      coordinates: { lat: 49.2866, lng: -123.1218 },
+      name: "Australian Visa Application Centre - Cape Town",
+      address: "2nd Floor, Norton Rose House, 8 Riebeek Street, Cape Town",
+      coordinates: { lat: -33.9205, lng: 18.4233 },
+    },
+  ],
+  "Canadian Visas": [
+    {
+      name: "Canada Visa Application Centre - Johannesburg",
+      address: "2nd Floor, West Tower, Sandton City, Rivonia Road, Sandton",
+      coordinates: { lat: -26.1070, lng: 28.0520 },
+    },
+    {
+      name: "Canada Visa Application Centre - Cape Town",
+      address: "2nd Floor, Icon Building, 24 Hans Strijdom Avenue, Cape Town City Centre",
+      coordinates: { lat: -33.9180, lng: 18.4233 },
     },
   ],
 };
@@ -89,7 +94,7 @@ interface ApplicationCentersProps {
 }
 
 export const ApplicationCenters = ({ onBack }: ApplicationCentersProps) => {
-  const [selectedCountry, setSelectedCountry] = useState<string>("South Africa");
+  const [selectedCountry, setSelectedCountry] = useState<string>("South African Visas");
 
   const openMaps = (address: string) => {
     const encodedAddress = encodeURIComponent(address);
@@ -114,7 +119,8 @@ export const ApplicationCenters = ({ onBack }: ApplicationCentersProps) => {
       </button>
 
       <div className="space-y-4">
-        <h2 className="text-2xl font-bold text-gray-800">Visa Application Centers</h2>
+        <h2 className="text-2xl font-bold text-gray-800">Visa Application Centers in South Africa</h2>
+        <p className="text-gray-600">Select which country's visa you want to apply for:</p>
         <div className="flex flex-wrap gap-2 mb-4">
           {Object.keys(centers).map((country) => (
             <button
